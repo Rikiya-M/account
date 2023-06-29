@@ -1,0 +1,325 @@
+@charset "utf-8";
+
+body{
+  margin: 0;
+  padding: 0;
+  font-size: 24pt;
+  line-height: 1.85;
+  word-wrap: break-word;
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+
+#home{
+  padding: 30px 20px 0;
+}
+
+
+ul{
+  margin: 0;
+  padding: 0;
+}
+
+#g-nav ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding-right:20px;
+}
+
+#g-nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  padding: 20px 35px;
+  transition: all .3s;
+}
+#g-nav li :hover{
+  color: #00ff4c;
+}
+
+#g-nav-m{
+  display: none;
+  top: -1000px;
+}
+
+
+.contain{
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+header{
+  position: fixed;
+  z-index: 99;
+}
+
+#header{
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 20px 100px 20px 0;
+}
+
+
+
+
+#contact-page{
+  position: relative;
+  padding: 120px 10% 5%;
+}
+
+
+
+#contact-page h1{
+  color: #000000;
+  letter-spacing: .5rem;
+  line-height: 1;
+  font-size: 42pt;
+  font-weight: 500;
+}
+
+
+.link{
+  display: block;
+  padding: 10px 5%;
+}
+
+.link a{
+  position: relative;
+  text-decoration: none;
+  padding: 2% 0;
+}
+
+.link a :hover{
+  color: #00ff4c;
+}
+
+.link h2{
+  font-size: 28pt;
+  color: #000000;
+}
+
+
+.link a::after {
+  content: '';
+  /*絶対配置で線の位置を決める*/
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /*線の形状*/
+  width: 80%;
+  height: 2px;
+  background:#00ff4c;
+  /*アニメーションの指定*/
+  transition: all .3s;
+  transform: scale(0, 1);/*X方向0、Y方向1*/
+  transform-origin: left top;/*左上基点*/
+}
+
+
+
+.link a:hover::after {
+  transform: scale(1, 1);/*X方向にスケール拡大*/
+}
+
+
+
+
+
+
+
+/*フェードアップ*/
+.fadeUp{
+  animation-name:fadeUpAnime;
+  animation-duration:0.5s;
+  animation-fill-mode:forwards;
+  opacity:0;
+  }
+  
+@keyframes fadeUpAnime{
+    from {
+      opacity: 0;
+    transform: translateY(75px);
+    }
+  
+    to {
+      opacity: 1;
+    transform: translateY(0);
+    }
+}
+  
+
+   
+  .fadeUpTrigger{
+      opacity: 0;
+  }
+
+  
+
+
+/*横幅が768px以下になった際の指定*/
+@media only screen and (max-width: 768px) {
+
+#g-nav{
+  display: none;
+  z-index: -999;
+}
+
+
+#g-nav-m{
+  display: none;
+  /*position:fixed;にし、z-indexの数値を小さくして最背面へ*/
+  position:fixed;
+	z-index: -10;
+	opacity: 0;/*はじめは透過0*/
+  /*ナビの位置と形状*/
+	top:0;
+	width:100%;
+  height: 100vh;/*ナビの高さ*/
+	background:#050505ee;
+  /*動き*/
+	transition: all 0.1s;
+}
+
+/*アクティブクラスがついたら透過なしにして最前面へ*/
+#g-nav-m.panelactive{
+  display: block;
+	opacity: 1;
+	z-index:999;
+}
+
+
+/*ナビゲーション*/
+#g-nav-m ul{
+    display: none;
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+#g-nav-m.panelactive ul{
+    display: block;
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav-m li{
+	list-style: none;
+  text-align: center; 
+}
+
+#g-nav-m li a{
+	color: #ffffff;
+	text-decoration: none;
+	padding:20px;
+	display: block;
+	letter-spacing: 0.1em;
+	font-weight: 600;
+  font-size: 32pt;
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn1{
+	position:fixed;
+  z-index: 9999;/*ボタンを最前面に*/
+	top:30px;
+	right: 25px;
+	cursor: pointer;
+  width: 50px;
+  height:50px;
+}
+	
+/*×に変化*/	
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 1px;
+	  background-color: #000000;
+  	width: 45%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+	top:15px;	
+}
+
+.openbtn1 span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+	top:31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+    background-color: #ffffff;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+	opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+    background-color: #ffffff;
+}
+
+.profile-image{
+  display: none;
+}
+
+
+
+}
+
+
+@media only screen and (max-width: 480px) {
+
+  #g-nav-m li a{
+    font-size: 24pt;
+  }
+
+
+  #top-page h1 {
+    font-size: 54pt;
+    position: absolute;
+    top: 30%;
+    left: 16%;
+  }
+
+  #top-page a {
+    color: #000000;
+    line-height: 1;
+    font-size: 18pt;
+    position: absolute;
+    top: 75%;
+    left: 16%;
+  }
+
+  .link h2{
+    font-size: 24pt;
+  }
+
+
+}

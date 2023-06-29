@@ -1,0 +1,366 @@
+@charset "utf-8";
+
+body{
+  margin: 0;
+  padding: 0;
+  font-size: 24pt;
+  line-height: 1.85;
+  word-wrap: break-word;
+  font-family: "futura-pt", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+#home{
+  padding: 30px 20px 0;
+}
+
+ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#g-nav ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding-right:20px;
+}
+
+#g-nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: #000000;
+  padding: 20px 35px;
+  transition: all .3s;
+}
+#g-nav li :hover{
+  color: #00bfff;
+}
+
+#g-nav-m{
+  display: none;
+  top: -1000px;
+}
+
+
+.contain{
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+header{
+  position: fixed;
+  z-index: 99;
+}
+
+#header{
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 20px 100px 20px 0;
+  background-color: #ffffff;
+}
+
+
+
+
+#works{
+  position: relative;
+  padding: 200px 10% 0 ;
+}
+
+
+#works h1 {
+  color: #000000;
+  letter-spacing: .5rem;
+  line-height: 1;
+  font-size: 66pt;
+  font-weight: 500;
+  text-align: center;
+  margin: 0;
+}
+
+
+.sort-btn{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 80px 20px 50px;
+  list-style-type: none;
+  font-size: 21pt;
+}
+  
+  
+.sort-btn li a{
+  cursor: pointer;
+  padding: 10px;
+  margin:0 10px;
+  text-decoration: none;
+}
+  
+  
+  
+.sort-btn li a{
+  position: relative;
+}
+  
+  
+.sort-btn li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  /*線になる丸の形状*/
+  width: 100%;
+  height: 4px;
+  border-radius: 48%;
+  background:#00bfff;
+  /*アニメーションの指定*/
+  transition: all .3s;
+  transform: scale(0.04, 1);/*X方向0.04、Y方向1*/
+  transform-origin:center bottom;/*中央下部基点*/
+}
+  
+  
+.sort-btn li.active a::after,
+.sort-btn li a:hover::after{
+  height: 2px;
+  border-radius: 0; 
+  transform: scale(0.8, 1);
+}
+  
+  
+.grid {
+  position: relative;
+  width: 100%;
+}
+  
+
+  
+.item{
+  display: block;
+  position: absolute;
+  width: 33%;
+  z-index: 1;
+  list-style:none;
+}
+  
+  
+.item-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+  
+.grid img{
+  width:100%;
+  height:auto;
+  vertical-align: bottom;
+  opacity: 0.75;
+  transition: .3s;
+}
+  
+.grid a :hover{
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+/*動きのエリア*/
+
+/*フェードアップ*/
+.fadeUp{
+  animation-name:fadeUpAnime;
+  animation-duration:0.5s;
+  animation-fill-mode:forwards;
+  opacity:0;
+  }
+  
+@keyframes fadeUpAnime{
+    from {
+      opacity: 0;
+    transform: translateY(75px);
+    }
+  
+    to {
+      opacity: 1;
+    transform: translateY(0);
+    }
+}
+  
+
+   
+  .fadeUpTrigger{
+      opacity: 0;
+  }
+
+
+
+
+/*横幅が768px以下になった際の指定*/
+@media only screen and (max-width: 768px) {
+
+#g-nav{
+  display: none;
+  z-index: -999;
+}
+
+
+#g-nav-m{
+  display: none;
+  /*position:fixed;にし、z-indexの数値を小さくして最背面へ*/
+  position:fixed;
+	z-index: -10;
+	opacity: 0;/*はじめは透過0*/
+  /*ナビの位置と形状*/
+	top:0;
+	width:100%;
+    height: 100vh;/*ナビの高さ*/
+	background:#050505ee;
+    /*動き*/
+	transition: all 0.1s;
+}
+
+/*アクティブクラスがついたら透過なしにして最前面へ*/
+#g-nav-m.panelactive{
+    display: block;
+	opacity: 1;
+	z-index:999;
+}
+
+
+/*ナビゲーション*/
+#g-nav-m ul{
+    display: none;
+    /*ナビゲーション天地中央揃え*/
+    position: absolute;
+    z-index: 999;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+#g-nav-m.panelactive ul{
+    display: block;
+}
+
+/*リストのレイアウト設定*/
+
+#g-nav-m li{
+	list-style: none;
+  text-align: center; 
+}
+
+#g-nav-m li a{
+	color: #ffffff;
+	text-decoration: none;
+	padding:20px;
+	display: block;
+	letter-spacing: 0.1em;
+	font-weight: 600;
+  font-size: 32pt;
+}
+
+/*========= ボタンのためのCSS ===============*/
+.openbtn1{
+	position:fixed;
+  z-index: 9999;/*ボタンを最前面に*/
+	top:30px;
+	right: 25px;
+	cursor: pointer;
+  width: 50px;
+  height:50px;
+}
+	
+/*×に変化*/	
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 1px;
+	  background-color: #000000;
+  	width: 45%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+	top:15px;	
+}
+
+.openbtn1 span:nth-of-type(2) {
+	top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+	top:31px;
+}
+
+.openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+    background-color: #ffffff;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+	opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+    background-color: #ffffff;
+}
+
+
+.item{
+    width: 49.5%;
+}
+}
+
+
+@media only screen and (max-width: 480px) {
+
+  #g-nav-m li a{
+    font-size: 24pt;
+  }
+
+  #works h1{
+    font-size: 54pt;
+  }
+
+  .sort-btn{
+    justify-content: space-between;
+    font-size: 16pt;
+  }
+
+  .sort-btn li{
+    width:48%;
+    margin:0 0 20px 0;
+    text-align:center;
+  }	
+
+
+  
+
+
+}
