@@ -89,12 +89,16 @@ header{
   width: 240px;
   margin: 0;
   padding-bottom: 8px;
+  position: relative;
+  top: 50px;
 }
 
 
 .link{
   display: block;
   padding: 10px 5%;
+  position: relative;
+  top: 100px;
 }
 
 .link a{
@@ -322,8 +326,8 @@ header{
   }
 
   .link h2{
-    font-size: 24pt;
+    font-size: 21pt;
+    line-height: 1.5;
   }
-
 
 }
