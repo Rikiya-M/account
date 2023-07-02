@@ -398,7 +398,7 @@ header{
 
 
   #content{
-    padding: 40% 10% 5%;
+    padding: 100px 10% 5%;
   }
   
   .text-area{
@@ -409,6 +409,11 @@ header{
 
   .introduce{
     line-height: 1.2;
+    font-size: 15pt;
+  }
+
+  #viewmore{
+    font-size: 16pt;
   }
 
 }
